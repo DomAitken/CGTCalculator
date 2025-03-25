@@ -4,24 +4,19 @@ import java.math.BigDecimal;
 import java.util.Scanner;
 import main.java.com.taxcalc.cgtcalc.globalVars;
 
-// Driver class
 public class CGTCalculator {
-    // main function
     public static void main() {
 
-        // Take input from the user
         Scanner sc = new Scanner(System.in);
-
         System.out.println("Enter your figures below:");
 
-        // Take the inputs
         globalVars.initialInvestment = sc.nextBigDecimal();
         globalVars.finalSum = sc.nextBigDecimal();
         globalVars.profit = globalVars.finalSum.subtract(globalVars.initialInvestment);
         globalVars.taxableAmount = globalVars.profit.subtract(globalVars.allowance); // £3,000 CGT allowance in the tax year 2025/26
 
         Scanner sc1 = new Scanner(System.in);
-        String source = sc1.toString();
+        String source = sc1.toString().toUpperCase();
 
         while(source != "A" && source != "B" && source != "C" && source != "D") {
             try {
@@ -35,14 +30,12 @@ public class CGTCalculator {
                 System.out.flush();
             }
         }
-
         highOrLow(source);
-
     }
 
     static void highOrLow(String source) {
         Scanner sc2 = new Scanner(System.in);
-        String taxRate = sc2.toString();
+        String taxRate = sc2.toString().toUpperCase();
 
         while(taxRate != "A" || taxRate != "B") {
             try {
@@ -60,52 +53,52 @@ public class CGTCalculator {
     public static void cryptoCalc(String source, String taxRate){
         highOrLow(source);
 
-        if (taxRate == "A" || taxRate == "a"){
+        if (taxRate == "A"){
             globalVars.taxedAmount = globalVars.taxableAmount.subtract(globalVars.taxableAmount.multiply(globalVars.higherRateCrypto));
         }
-        else if (taxRate == "B" || taxRate == "b"){
+        else if (taxRate == "B"){
             globalVars.taxedAmount = globalVars.taxableAmount.subtract(globalVars.taxableAmount.multiply(globalVars.basicRateCrypto));
         }
 
-        System.out.println("Your profit after tax is: £"+globalVars.taxedAmount);
+        System.out.println("Your profit after tax is: £"+globalVars.formatter.format(globalVars.taxedAmount));
     }
 
     public static void stocksCalc(String source, String taxRate){
         highOrLow(source);
 
-        if (taxRate == "A" || taxRate == "a"){
+        if (taxRate == "A"){
             globalVars.taxedAmount = globalVars.taxableAmount.subtract(globalVars.taxableAmount.multiply(globalVars.higherRateStocks));
         }
-        else if (taxRate == "B" || taxRate == "b"){
+        else if (taxRate == "B"){
             globalVars.taxedAmount = globalVars.taxableAmount.subtract(globalVars.taxableAmount.multiply(globalVars.basicRateStocks));
         }
 
-        System.out.println("Your profit after tax is: £"+globalVars.taxedAmount);
+        System.out.println("Your profit after tax is: £"+globalVars.formatter.format(globalVars.taxedAmount));
     }
 
     public static void propertyCalc(String source, String taxRate){
         highOrLow(source);
 
-        if (taxRate == "A" || taxRate == "a"){
+        if (taxRate == "A"){
             globalVars.taxedAmount = globalVars.taxableAmount.subtract(globalVars.taxableAmount.multiply(globalVars.higherRateProperty));
         }
-        else if (taxRate == "B" || taxRate == "b"){
+        else if (taxRate == "B"){
             globalVars.taxedAmount = globalVars.taxableAmount.subtract(globalVars.taxableAmount.multiply(globalVars.basicRateProperty));
         }
 
-        System.out.println("Your profit after tax is: £"+globalVars.taxedAmount);
+        System.out.println("Your profit after tax is: £"+globalVars.formatter.format(globalVars.taxedAmount));
     }
 
     public static void otherCalc(String source, String taxRate){
         highOrLow(source);
 
-        if (taxRate == "A" || taxRate == "a"){
+        if (taxRate == "A"){
             globalVars.taxedAmount = globalVars.taxableAmount.subtract(globalVars.taxableAmount.multiply(globalVars.higherRateOther));
         }
-        else if (taxRate == "B" || taxRate == "b"){
+        else if (taxRate == "B"){
             globalVars.taxedAmount = globalVars.taxableAmount.subtract(globalVars.taxableAmount.multiply(globalVars.basicRateOther));
         }
 
-        System.out.println("Your profit after tax is: £"+globalVars.taxedAmount);
+        System.out.println("Your profit after tax is: £"+globalVars.formatter.format(globalVars.taxedAmount));
     }
 }

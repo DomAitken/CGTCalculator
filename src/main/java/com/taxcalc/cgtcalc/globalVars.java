@@ -1,6 +1,7 @@
 package main.java.com.taxcalc.cgtcalc;
 
 import java.math.BigDecimal;
+import java.text.DecimalFormat;
 
 public class globalVars {
     public static BigDecimal initialInvestment, finalSum, profit, taxableAmount, taxedAmount;
@@ -9,4 +10,5 @@ public class globalVars {
     public static BigDecimal basicRateStocks, basicRateCrypto, basicRateOther = new BigDecimal(0.1);
     public static BigDecimal higherRateProperty = new BigDecimal(0.24);
     public static BigDecimal basicRateProperty = new BigDecimal(0.18);
+    public static DecimalFormat formatter = new DecimalFormat("#,###.##");
 }
