@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class CgtcalcApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CgtcalcApplication.class, args);
+		SpringApplication.run(CGTCalculator.class, args);
 	}
 
 }
